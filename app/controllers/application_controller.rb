@@ -19,4 +19,12 @@ class ApplicationController < Sinatra::Base
       review.destroy
       review.to_json
   end
+  patch "/reviews/:id" do
+    review =Review.find(params[:id])
+    review.update(
+      title: params[:title],
+      content: params[:content]
+    )
+    review.to_json
+   end
 end
